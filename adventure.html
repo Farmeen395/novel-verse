@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Adventure Novels - NovelVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f8fa;
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .navbar ul li .dropdown a {
+      display: block;
+      padding: 10px 16px;
+      color: #003b71;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar ul li .dropdown a:hover {
+      background-color: #d7ecff;
+    }
+
+    .navbar ul li:hover .dropdown {
+      display: block;
+    }
+
+    .novel-detail {
+      padding: 60px 20px;
+      background: #e8f1f5;
+    }
+
+    .novel-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .novel-cover-detail {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .novel-text {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .novel-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #003b71;
+    }
+
+    .novel-description p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #2c3e50;
+    }
+
+    @media (max-width: 768px) {
+      .novel-content {
+        flex-direction: column;
+      }
+    }
+
+    .top-romantic-novels {
+      background: linear-gradient(135deg, #003b71 0%, #007991 100%);
+      padding: 60px 0;
+      border-radius: 30px;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .top-romantic-novels.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .top-romantic-novels .heading {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .top-romantic-novels .novels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .top-romantic-novels .novel-card {
+      background: #e0f7fa;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #b2ebf2;
+    }
+
+    .top-romantic-novels .novel-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 123, 146, 0.2);
+    }
+
+    .top-romantic-novels .novel-cover {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .top-romantic-novels .novel-title {
+      font-size: 1.3rem;
+      margin: 10px 0 8px;
+      color: #171818;
+    }
+
+    .top-romantic-novels .novel-description {
+      font-size: 0.95rem;
+      color: #282a2b;
+      margin-bottom: 15px;
+    }
+
+    .top-romantic-novels .read-more {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #007991;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .top-romantic-novels .read-more:hover {
+      background-color: #005b6f;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="index.html" class="logo">NovelVerse</a>
+    
+    <label for="menu-toggle" class="hamburger"></label>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown-parent">
+        <a href="#">Novels</a>
+        <ul class="dropdown">
+          <li><a href="english.html">English Novels</a></li>
+          <li><a href="urdu.html">Urdu Novels</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <section class="novel-detail">
+    <div class="novel-content">
+      <img src="images/ad.jpg" alt="Adventure Novel" class="novel-cover-detail" />
+      <div class="novel-text">
+        <h1 class="novel-title">Edge of the Wild</h1>
+        <div class="novel-description">
+         <p>
+  Dive into the thrilling world of danger, mystery, and discovery. "Edge of the Wild" takes readers on a breathtaking journey through forgotten lands, uncharted territories, and perilous quests. With every step, the heroes face mythical creatures, ancient puzzles, and treacherous betrayals. It's not just a fight for survival—it’s a race for glory, legacy, and truth buried deep in the heart of the wilderness.
+  Along the way, alliances are tested, and every decision can mean the difference between life and death. The terrain is unforgiving, the enemies relentless, but the spirit of adventure never fades. Secrets from ancient civilizations whisper through the trees, calling the brave to uncover what lies beyond the edge. This is not just a story—it's an expedition into the unknown. Prepare to lose yourself in the thrill of the chase, where every chapter pulls you deeper into a world untamed.
+</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="top-romantic-novels">
+    <div class="container">
+      <h2 class="heading">Top Adventure Novels of the World</h2>
+      <div class="novels-grid">
+
+        <div class="novel-card">
+          <img src="images/moby.jpg" alt="Moby Dick" class="novel-cover">
+          <h3 class="novel-title">Moby Dick</h3>
+          <p class="novel-description">Join Captain Ahab in his relentless pursuit of the legendary white whale across treacherous seas.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/rob.jpeg" alt="Robinson Crusoe" class="novel-cover">
+          <h3 class="novel-title">Robinson Crusoe</h3>
+          <p class="novel-description">A timeless tale of survival and exploration on a remote island after a shipwreck.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/hob.jpg" alt="The Hobbit" class="novel-cover">
+          <h3 class="novel-title">The Hobbit</h3>
+          <p class="novel-description">Bilbo Baggins' epic quest through Middle-earth filled with dragons, trolls, and treasure.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/ar.jpeg" alt="Around the World in 80 Days" class="novel-cover">
+          <h3 class="novel-title">Around the World in 80 Days</h3>
+          <p class="novel-description">Phileas Fogg races against time in this classic globe-trotting adventure.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/tre.jpg" alt="Treasure Island" class="novel-cover">
+          <h3 class="novel-title">Treasure Island</h3>
+          <p class="novel-description">Pirates, buried gold, and mutiny in this thrilling tale of maritime exploration.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/jun.jpeg" alt="The Jungle Book" class="novel-cover">
+          <h3 class="novel-title">The Jungle Book</h3>
+          <p class="novel-description">Join Mowgli's wild adventures in the heart of the jungle with wolves, bears, and tigers.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const target = document.querySelector(".top-romantic-novels");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      if (target) observer.observe(target);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - NovelVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #555;
+    }
+
+      /* Navbar styles */
+    .navbar {
+      background: linear-gradient(90deg, #6b49a8, #a77ecd);
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgb(167 126 205 / 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .navbar a.logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffb100;
+      user-select: text;
+    }
+
+    .navbar a:hover {
+      color: #fff9c4; /* soft light yellow */
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #f9f7fc;
+      color: #3f0071;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .navbar ul li .dropdown a {
+      display: block;
+      padding: 10px 16px;
+      color: #6b49a8;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar ul li .dropdown a:hover {
+      background-color: #ffb10022;
+      color: #ffb100;
+    }
+
+    .navbar ul li:hover .dropdown {
+      display: block;
+    }
+
+    .about-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .about-section h1 {
+      font-size: 2.8rem;
+      color: #3f0071;
+      margin-bottom: 20px;
+      animation: slideInDown 1s ease;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      margin: 20px 0;
+      color: #555;
+    }
+
+    .about-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .about-images img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .about-images img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Advanced Footer Styles */
+    footer {
+      background-color: rgb(189, 171, 255);
+      color: rgb(75, 35, 149);
+      padding: 50px 20px 20px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      box-shadow: inset 0 10px 20px -15px rgba(0,0,0,0.2);
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-section {
+      flex: 1 1 220px;
+      min-width: 220px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: rgb(75, 35, 149);
+      border-bottom: 2px solid rgb(109, 85, 217);
+      padding-bottom: 6px;
+    }
+
+    .footer-links,
+    .social-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li,
+    .social-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgb(75, 35, 149);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: rgb(109, 85, 217);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      color: rgb(75, 35, 149);
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: rgb(109, 85, 217);
+    }
+
+    .social-links svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    .newsletter input[type="email"] {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 25px 0 0 25px;
+      outline: none;
+      width: 70%;
+      max-width: 300px;
+      font-size: 1rem;
+    }
+
+    .newsletter button {
+      padding: 10px 20px;
+      background-color: rgb(109, 85, 217);
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .newsletter button:hover {
+      background-color: rgb(75, 35, 149);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: rgb(75, 35, 149);
+      border-top: 1px solid rgb(109, 85, 217);
+      padding-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-section {
+        min-width: 100%;
+        max-width: 400px;
+      }
+
+      .newsletter input[type="email"] {
+        width: 100%;
+        border-radius: 25px 25px 0 0;
+      }
+
+      .newsletter button {
+        width: 100%;
+        border-radius: 0 0 25px 25px;
+        margin-top: 6px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInDown {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+ <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">NovelVerse</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="#">Novels</a>
+          <div class="dropdown">
+            <a href="english.html">English Novels</a>
+            <a href="urdu.html">Urdu Novels</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h1>Discover the Magic of Novels</h1>
+    <p>At NovelVerse, we cherish the beauty of storytelling. Novels let us walk in someone else's shoes, feel emotions deeply, and escape into extraordinary worlds. Whether it's a romantic tale or a thrilling adventure, there's a novel for every soul.</p>
+    <p>Reading not only improves your imagination and vocabulary—it brings joy, comfort, and connection. Our library is filled with both English and Urdu treasures for all readers, young and old.</p>
+
+    <div class="about-images">
+      <img src="images/nov.jpg" alt="Reading Peacefully" />
+      <img src="images/th (4).jpeg" alt="Stack of Books" />
+      <img src="images/wp.jpg" alt="Woman Reading" />
+    </div>
+  </section>
+
+  <!-- Documentary Section -->
+  <section class="about-section" style="background-color: #fffafc; margin-top: 40px;">
+    <h1>Featured Novel Documentary</h1>
+    <p><strong>To Kill a Mockingbird</strong> by Harper Lee is a landmark in American literature. It explores racial injustice, moral growth, and human compassion through the eyes of young Scout Finch in the deeply segregated American South.</p>
+    <p>This Pulitzer Prize-winning novel remains a staple in schools and continues to inspire discussions about justice and empathy.</p>
+  </section>
+
+  <!-- Advanced Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About NovelVerse</h3>
+        <p>NovelVerse is your gateway to a world of stories, from classic masterpieces to modern gems. Dive into our rich collection of English and Urdu novels and find your next favorite read.</p>
+      </div>
+
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="english.html">English Novels</a></li>
+          <li><a href="urdu.html">Urdu Novels</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section newsletter">
+        <h3>Subscribe to Our Newsletter</h3>
+        <form action="#" method="post" onsubmit="alert('Thank you for subscribing!'); return false;">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+          <li>
+            <a href="#" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.675 0h-21.35C.59 0 0 .59 0 1.318v21.365C0 23.41.59 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.798.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.588l-.467 3.623h-3.12V24h6.116c.73 0 1.32-.59 1.32-1.318V1.318C24 .59 23.41 0 22.675 0z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.75 2C4.96 2 2.75 4.21 2.75 7v10c0 2.79 2.21 5 4.99 5h6.5c2.78 0 5-2.21 5-5V7c0-2.79-2.22-5-5-5h-6.5zm7.25 2.25c.414 0 .75.336.75.75s-.336.75-.75.75a.75.75 0 1 1 0-1.5zm-5 1c1.75 0 3.25 1.5 3.25 3.25S11.75 12.75 10 12.75 6.75 11.25 6.75 9.5 8.25 5.25 10 5.25zm6.5 8.5a2 2 0 0 1-2 2H9.5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4.75a2 2 0 0 1 2 2v3z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14.86 5.48 5.48 0 0 0 2.4-3.02 10.65 10.65 0 0 1-3.28 1.25A5.37 5.37 0 0 0 16.7 2c-3 0-5.4 2.5-5.4 5.57 0 .43.05.85.15 1.26-4.5-.23-8.5-2.5-11.2-5.93a5.61 5.61 0 0 0-.72 2.8c0 1.92 1 3.62 2.5 4.62a5.52 5.52 0 0 1-2.44-.67v.06c0 2.7 1.9 5 4.43 5.53a5.41 5.41 0 0 1-2.43.1c.68 2 2.6 3.46 4.8 3.5A10.8 10.8 0 0 1 2 19.7a15.23 15.23 0 0 0 8.29 2.42c9.95 0 15.4-8.27 15.4-15.4v-.7A10.6 10.6 0 0 0 23 3z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452H16.9v-5.569c0-1.328-.024-3.04-1.852-3.04-1.854 0-2.137 1.445-2.137 2.939v5.67h-3.548V9h3.408v1.561h.047c.475-.9 1.637-1.852 3.368-1.852 3.603 0 4.27 2.372 4.27 5.458v6.285zM5.337 7.433a2.07 2.07 0 1 1 0-4.141 2.07 2.07 0 0 1 0 4.141zm1.775 13.02H3.56V9h3.552v11.453zM22.225 0H1.771C.792 0 0 .77 0 1.72v20.56C0 23.23.792 24 1.77 24h20.451c.978 0 1.77-.77 1.77-1.72V1.72c0-.95-.792-1.72-1.77-1.72z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 NovelVerse. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

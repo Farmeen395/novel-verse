@@ -1,0 +1,157 @@
+/* RESET AND BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(41, 38, 38);
+    color: #f7f7f7;
+    overflow-x: hidden;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0;
+}
+
+
+.hero {
+    position: relative;
+    background: url('images/bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-attachment: fixed;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    color: #f7f7f7;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 0 20px #7da2a9;
+    animation: slideIn 2s ease-in-out;
+}
+
+.hero-subtitle {
+    font-size: 1.7rem;
+    color: #c4e0e5;
+    margin-top: 20px;
+    animation: fadeInUp 2.5s ease;
+}
+
+/* FEATURED NOVELS */
+.featured {
+    padding: 60px 0;
+        background: linear-gradient(135deg, #293f3c 0%, #f3d4cd 100%);
+    /* background: linear-gradient(to right, #1e2022, #2c2f33); */
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #121313;
+    font-family: 'Cinzel Decorative', cursive;
+    text-shadow: 0 0 12px #f7f7f7;
+    margin-bottom: 40px;
+}
+
+.novels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.novel-card {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(125, 162, 169, 0.25);
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(125, 162, 169, 0.3);
+   
+}
+
+.novel-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 45px rgba(125, 162, 169, 0.5);
+}
+
+.novel-cover {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+}
+
+.novel-card:hover .novel-cover {
+    transform: scale(1.05);
+}
+
+.novel-title {
+    font-size: 1.4rem;
+    color: #0f0f0f;
+    margin: 10px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.novel-description {
+    font-size: 0.95rem;
+    color: #0e0d0d;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.read-more {
+    color: #35808f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #f7f7f7;
+}
+
+/* ANIMATIONS */
+@keyframes pulseGlow {
+    0%, 100% { text-shadow: 0 0 10px #7da2a9; }
+    50% { text-shadow: 0 0 20px #f7f7f7; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

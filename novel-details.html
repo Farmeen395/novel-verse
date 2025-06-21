@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Novel Details - NovelVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+ 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Navbar Styling */
+ .navbar {
+     background: linear-gradient(135deg, #8e3b46 0%, #ffc2b4 100%);
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgb(167 126 205 / 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .navbar a.logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffb100;
+      user-select: text;
+    }
+
+    .navbar a:hover {
+      color: #fff9c4; /* soft light yellow */
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #f9f7fc;
+      color: #3f0071;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .navbar ul li .dropdown a {
+      display: block;
+      padding: 10px 16px;
+      color: #6b49a8;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar ul li .dropdown a:hover {
+      background-color: #ffb10022;
+      color: #ffb100;
+    }
+
+    .navbar ul li:hover .dropdown {
+      display: block;
+    }
+    .novel-detail {
+      padding: 60px 20px;
+      background: #fafafa;
+    }
+
+    .novel-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .novel-cover-detail {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .novel-text {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .novel-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #3f0071;
+    }
+
+    .novel-description p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .novel-content {
+        flex-direction: column;
+      }
+    }
+
+    .top-romantic-novels {
+      background: linear-gradient(135deg, #8e3b46 0%, #ffc2b4 100%);
+      padding: 60px 0;
+      border-radius: 30px;
+      color: #2e0d13;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .top-romantic-novels.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .top-romantic-novels .heading {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .top-romantic-novels .novels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .top-romantic-novels .novel-card {
+      background: #fff4f1;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #ffd3ca;
+    }
+
+    .top-romantic-novels .novel-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(142, 59, 70, 0.2);
+    }
+
+    .top-romantic-novels .novel-cover {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #8e3b46;
+    }
+
+    .top-romantic-novels .novel-title {
+      font-size: 1.3rem;
+      margin: 10px 0 8px;
+      color: #8e3b46;
+    }
+
+    .top-romantic-novels .novel-description {
+      font-size: 0.95rem;
+      color: #4e1c24;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .top-romantic-novels .read-more {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #ff9a8b;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .top-romantic-novels .read-more:hover {
+      background-color: #ff6f61;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar Section -->
+ <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">NovelVerse</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="#">Novels</a>
+          <div class="dropdown">
+            <a href="english.html">English Novels</a>
+            <a href="urdu.html">Urdu Novels</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ✅ Novel Detail Section -->
+  <section class="novel-detail">
+    <div class="novel-content">
+      <img src="images/love.webp" alt="Romantic Novel" class="novel-cover-detail" />
+      <div class="novel-text">
+        <h1 class="novel-title">Romantic Love Story</h1>
+        <div class="novel-description">
+          <p>
+            In a world full of chaos, two hearts find solace in each other. This enchanting romantic novel explores the magic of unexpected encounters and the strength of a love that defies all odds. As the story unfolds, passion and vulnerability intertwine in the most poetic way, leaving readers captivated by the sincerity and intensity of true love...
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Top Romantic Novels Section -->
+  <section class="top-romantic-novels">
+    <div class="container">
+      <h2 class="heading">Top Romantic Novels of the World</h2>
+      <div class="novels-grid">
+
+        <div class="novel-card">
+          <img src="images/pri.jpg" alt="Pride and Prejudice" class="novel-cover">
+          <h3 class="novel-title">Pride and Prejudice</h3>
+          <p class="novel-description">Jane Austen's classic tale of love and misunderstanding in the English countryside.</p>
+          <a href="pride.html" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/me.download" alt="Me Before You" class="novel-cover">
+          <h3 class="novel-title">Me Before You</h3>
+          <p class="novel-description">A heart-wrenching story by Jojo Moyes about love, courage, and difficult choices.</p>
+          <a href="Me Before You.html" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/fau.jpeg" alt="The Fault in Our Stars" class="novel-cover">
+          <h3 class="novel-title">The Fault in Our Stars</h3>
+          <p class="novel-description">John Green’s poignant tale of two teens falling in love while fighting illness.</p>
+          <a href="the fault in the stars.html" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/out.jpg" alt="Outlander" class="novel-cover">
+          <h3 class="novel-title">Outlander</h3>
+          <p class="novel-description">A time-travel romance blending history, passion, and unforgettable characters.</p>
+          <a href="outlander.html" class="read-more">Read More</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Scroll Animation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const target = document.querySelector(".top-romantic-novels");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      if (target) {
+        observer.observe(target);
+      }
+    });
+  </script>
+</body>
+</html>

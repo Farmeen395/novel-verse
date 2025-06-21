@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Request a Novel - NovelVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f7fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background: linear-gradient(90deg, #6b49a8, #a77ecd);
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgb(167 126 205 / 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .navbar a.logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffb100;
+      user-select: text;
+    }
+
+    .navbar a:hover {
+      color: #fff9c4; /* soft light yellow */
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #f9f7fc;
+      color: #3f0071;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .navbar ul li .dropdown a {
+      display: block;
+      padding: 10px 16px;
+      color: #6b49a8;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar ul li .dropdown a:hover {
+      background-color: #ffb10022;
+      color: #ffb100;
+    }
+
+    .navbar ul li:hover .dropdown {
+      display: block;
+    }
+
+    /* Contact section */
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .contact .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .contact h1.heading {
+      font-size: 2.5rem;
+      color: #6b49a8;
+      margin-bottom: 20px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #a77ecd;
+      box-shadow: 0 0 5px #a77ecd88;
+    }
+
+    .submit-btn {
+      background-color: #ffb100;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #d99900;
+    }
+
+    .novel-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 12px rgba(167, 126, 205, 0.25);
+    }
+
+    .form-description {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Footer styles */
+    footer {
+      background: linear-gradient(90deg, #a77ecd, #6b49a8);
+      color: #f0e6ff;
+      padding: 40px 20px 20px;
+      font-size: 0.9rem;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgb(167 126 205 / 0.3);
+      margin-top: auto;
+    }
+
+    footer .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      text-align: left;
+    }
+
+    footer .footer-section {
+      flex: 1 1 200px;
+      min-width: 180px;
+    }
+
+    footer h3 {
+      color: #ffdb70;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    footer p,
+    footer li,
+    footer a {
+      color: #f0e6ffcc;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a:hover {
+      color: #fff9c4;
+      text-decoration: underline;
+    }
+
+    footer .newsletter input[type='email'] {
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      width: 70%;
+      max-width: 250px;
+      margin-right: 10px;
+      font-size: 1rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    footer .newsletter input[type='email']:focus {
+      box-shadow: 0 0 8px #ffb100aa;
+    }
+
+    footer .newsletter button {
+      padding: 10px 15px;
+      background-color: #ffb100;
+      border: none;
+      border-radius: 4px;
+      color: #3f0071;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    footer .newsletter button:hover {
+      background-color: #d99900;
+      color: #fff;
+    }
+
+    footer .footer-bottom {
+      margin-top: 30px;
+      border-top: 1px solid #7f66a0;
+      padding-top: 15px;
+      font-size: 0.85rem;
+      color: #cbbfffcc;
+      text-align: center;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      footer .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      footer .footer-section {
+        min-width: auto;
+      }
+
+      footer .newsletter input[type='email'] {
+        width: 100%;
+        margin: 0 0 10px 0;
+      }
+
+      footer .newsletter button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">NovelVerse</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="#">Novels</a>
+          <div class="dropdown">
+            <a href="english.html">English Novels</a>
+            <a href="urdu.html">Urdu Novels</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="contact">
+    <div class="container">
+      <img src="images/bg2.jpg" alt="Book Cover" class="novel-image"> <!-- Change this to your own image -->
+      <h1 class="heading">Request a Novel</h1>
+      <p class="form-description">
+        Looking for a specific novel? Let us know its name, and we’ll try our best to make it available for you!
+      </p>
+      <form action="send-request.php" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="novel_name" placeholder="Name of the Novel You Want" required>
+        <textarea name="message" placeholder="Optional Message (e.g., author name, edition)" rows="4"></textarea>
+        <button type="submit" class="submit-btn">Send Request</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About NovelVerse</h3>
+        <p>Your ultimate destination for English and Urdu novels, offering a vast collection of stories and literary works.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="english.html">English Novels</a></li>
+          <li><a href="urdu.html">Urdu Novels</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section newsletter">
+        <h3>Subscribe to our Newsletter</h3>
+        <form action="#" method="post">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 NovelVerse. All rights reserved.
+    </div>
+  </footer>
+  
+</body>
+</html>

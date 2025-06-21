@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Novels - NovelVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #1e1e2f;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+    
+    /* Rest of your styles for novel cards and footer remain unchanged */
+
+    .section-description {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ccc;
+      margin: 0 auto 40px auto;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .novel-cover {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+    }
+
+    .novels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 1rem 2rem;
+      flex-grow: 1;
+    }
+
+    .novel-card {
+      background: #2c2f4d;
+      padding: 15px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    .read-more {
+      color: #ff6b6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      background: linear-gradient(to right, #222831, #31363F);
+      color: #bbb;
+      padding: 40px 20px 20px;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    footer .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      color: #ddd;
+      text-align: left;
+    }
+
+    footer .footer-section {
+      flex: 1 1 200px;
+      min-width: 180px;
+    }
+
+    footer h3 {
+      color: #ff6b6b;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    footer p,
+    footer li,
+    footer a {
+      color: #bbb;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a:hover {
+      color: #ff6b6b;
+      text-decoration: underline;
+    }
+
+    footer .newsletter input[type='email'] {
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      width: 70%;
+      max-width: 250px;
+      margin-right: 10px;
+    }
+
+    footer .newsletter button {
+      padding: 10px 15px;
+      background-color: #ff6b6b;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    footer .newsletter button:hover {
+      background-color: #e85c5c;
+    }
+
+    footer .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    footer .social-icons a svg {
+      fill: #bbb;
+      width: 24px;
+      height: 24px;
+      transition: fill 0.3s ease;
+    }
+
+    footer .social-icons a:hover svg {
+      fill: #ff6b6b;
+    }
+
+    footer .footer-bottom {
+      margin-top: 30px;
+      border-top: 1px solid #444;
+      padding-top: 15px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      footer .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      footer .footer-section {
+        min-width: auto;
+      }
+
+      footer .newsletter input[type='email'] {
+        width: 100%;
+        margin: 0 0 10px 0;
+      }
+
+      footer .newsletter button {
+        width: 100%;
+      }
+
+      footer .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <style>
+        .navbar {
+      background: linear-gradient(90deg, #343335, #59575a);
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgb(167 126 205 / 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .navbar a.logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff6b6b;
+      user-select: text;
+    }
+
+    .navbar a:hover {
+      color: #fff9c4; /* soft light yellow */
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #f9f7fc;
+      color: #3f0071;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .navbar ul li .dropdown a {
+      display: block;
+      padding: 10px 16px;
+      color: #6b49a8;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar ul li .dropdown a:hover {
+      background-color: #ffb10022;
+      color: #ffb100;
+    }
+
+    .navbar ul li:hover .dropdown {
+      display: block;
+    }
+  </style>
+ <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">NovelVerse</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="#">Novels</a>
+          <div class="dropdown">
+            <a href="english.html">English Novels</a>
+            <a href="urdu.html">Urdu Novels</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+  <section class="novels-list">
+    <div class="container">
+      <h1 class="heading" style="color:white; text-align:center; margin-top: 30px;">All Novels</h1>
+      <div class="novels-grid">
+        <div class="novel-card">
+          <img src="images/pri.jpg" alt="Pride and Prejudice" class="novel-cover">
+          <h3 class="novel-title">Pride and Prejudice</h3>
+          <p class="novel-description">Jane Austen's classic tale of love and misunderstanding in the English countryside.</p>
+          <a href="pride.html" class="read-more">Read More</a>
+        </div>
+
+
+        <div class="novel-card">
+          <img src="images/me.download" alt="Me Before You" class="novel-cover">
+          <h3 class="novel-title">Me Before You</h3>
+          <p class="novel-description">A heart-wrenching story by Jojo Moyes about love, courage, and difficult choices.</p>
+          <a href="Me Before You.html" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/fau.jpeg" alt="The Fault in Our Stars" class="novel-cover">
+          <h3 class="novel-title">The Fault in Our Stars</h3>
+          <p class="novel-description">John Green’s poignant tale of two teens falling in love while fighting illness.</p>
+          <a href="the fault in the stars.html" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/out.jpg" alt="Outlander" class="novel-cover">
+          <h3 class="novel-title">Outlander</h3>
+          <p class="novel-description">A time-travel romance blending history, passion, and unforgettable characters.</p>
+          <a href="outlander.html" class="read-more">Read More</a>
+        </div>
+
+
+
+        
+        <div class="novel-card">
+          <img src="images/note.jpg" alt="The Notebook" class="novel-cover">
+          <h3 class="novel-title">The Notebook</h3>
+          <p class="novel-description">Nicholas Sparks' unforgettable story of first love, memory, and lifelong devotion.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+
+        <div class="novel-card">
+          <img src="images/jan2.jpg" alt="Jane Eyre" class="novel-cover">
+          <h3 class="novel-title">Jane Eyre</h3>
+          <p class="novel-description">Charlotte Brontë’s empowering novel about love, independence, and resilience.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About NovelVerse</h3>
+        <p>Your ultimate destination for English and Urdu novels, offering a vast collection of stories and literary works.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="english.html">English Novels</a></li>
+          <li><a href="urdu.html">Urdu Novels</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section newsletter">
+        <h3>Subscribe to our Newsletter</h3>
+        <form action="#" method="post">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 NovelVerse. All rights reserved.
+    </div>
+  </footer>
+  
+</body>
+</html>
